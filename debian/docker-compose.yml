@@ -1,0 +1,13 @@
+version: '3'
+services:
+  debian-cli:
+    image: debian-cli:v0.1.1.2
+    build:
+      context: .
+      dockerfile: Dockerfile
+    platform: linux/amd64
+    volumes:
+      - ./home:/root/
+      - ./opt:/opt/
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t

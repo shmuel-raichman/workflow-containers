@@ -1,0 +1,25 @@
+version: '3'
+services:
+  debian-cli:
+    image: debian-cli:v0.1.1.2
+    ports:
+      # - "8000:8000" # dev - west - demo-lab-service
+      # - "8001:8001" # dev - west - demo-lab-service
+      # - "9000:9000" # dev - central - argocd 
+      # - "9001:9001" # dev - central - argocd 
+      - "0.0.0.0:9000-9030:9000-9030"
+      - "0.0.0.0:8000-8030:8000-8030"
+    
+    build:
+      context: .
+      dockerfile: Dockerfile
+    platform: linux/amd64
+    entrypoint: bash /opt/start/entrypoint.sh
+    volumes:
+      - ./home:/root/
+      - ./opt:/opt/
+      - $HOME/.kube/:/root/.kube/
+      - $HOME/.aws/:/root/.aws/
+      - ./entrypoint.sh:/opt/start/entrypoint.sh
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
