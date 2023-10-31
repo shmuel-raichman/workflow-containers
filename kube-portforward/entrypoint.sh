@@ -1,7 +1,7 @@
 # B"H
 
 # Source env
-source env.sh
+source /opt/start/env.sh
 
 # dev:central
 kubectl port-forward -n default svc/demo-lab-service "9000:8080" --context $DEV_CENTRAL_CTX --address='0.0.0.0' &

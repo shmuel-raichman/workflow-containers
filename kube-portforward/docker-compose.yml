@@ -17,5 +17,6 @@ services:
       - $HOME/.kube/:/root/.kube/
       - $HOME/.aws/:/root/.aws/
       - ./entrypoint.sh:/opt/start/entrypoint.sh
+      - ./env.sh:/opt/start/env.sh
     stdin_open: true # docker run -i
     tty: true        # docker run -t
