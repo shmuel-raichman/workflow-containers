@@ -6,6 +6,10 @@ services:
       context: .
       dockerfile: Dockerfile
     platform: linux/amd64
+    environment:
+      - PROMPT_COMMAND='history -a' # Immediately persist commands to .bash_history                                                                                                                                                                                                                                │
+      - HISTSIZE=100000 # Number of lines to keep for history command                                                                                                                                                                                                                                              │
+      - HISTFILESIZE=100000000 # Number of lines to keep for ~/.bash_history
     volumes:
       - ./home:/root/
       - ./opt:/opt/
